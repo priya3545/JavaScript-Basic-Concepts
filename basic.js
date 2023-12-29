@@ -20,7 +20,7 @@ function printPromoCode(){
 
 day = 'sun';
 console.log(day +"day");// if u use let type will throw error like 'cannot access day before initalization'
-var day; 
+let day; 
 
 
 /*----------------------------------------------------------------------------------------------------------------*/
