@@ -68,6 +68,11 @@ const stud = {
 }
 stud.name = 'Priya'; // we can't directly update the const variable but we can do like this in const object
 console.log("stud detais", stud);
+/*stud detais {
+  name: 'Priya',
+  dob: '22/22/1001',
+  address: { no: 3, street: 'Malai street' }
+}*/
 
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 
