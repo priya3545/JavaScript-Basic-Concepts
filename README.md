@@ -1,5 +1,4 @@
 # JavaScript-Basic-Concepts
 understand the JS concepts via codes
 
-1. Added basic concepts in Javascript.
-2. 
+1. Added basic concepts in Javascript. 
