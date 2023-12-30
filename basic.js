@@ -2,7 +2,7 @@
 //hoisting -> variable and function declartion are moved to top of the scope irrespective of where declared.
 a=10;
 console.log(a); //10
-var a;   //hoisting -> variable declartion only not initalization
+var a;   //hoisting -> variable declartion only not initalization var a=10; //not applicabale
 
 printPromoCode();
 function printPromoCode(){
