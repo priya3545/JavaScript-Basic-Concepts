@@ -225,6 +225,113 @@ const printRanks = function(){console.log("Ranks: "+ this.rank)}; //5
 printRanks.call({rank:5});
 
 
+//apply -> the same as call, but other arguments will be shared as Array
+val.print.apply({name:'Giant'},['Kandan','Chennai']);
+
+//bind -> it'll copy the method to the object and return new object. it's not Immediately invoked but can do it later
+
+var number1 = 10;
+var val1 = {
+  number1: 1,
+  name: "Promo",
+  print: function() {return this.number1}
+}
+//val1.print();
+var funcBind = val1.print;
+console.log(funcBind()); //undefined  
+var newValue = funcBind.bind(val1);
+console.log(newValue());//1 -> the new object called as 'bound funciton'
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+//Debouncing ->  used to optimize and fast performance for web app.
+//real def ->  limiting the rate of execution a particular function ->example search options in e-commerce webiste
+/*
+const textBox = document.createElement('input');
+textBox.setAttribute('id', Value');
+textBox.setAttribute('type', 'text'); must
+
+// good use -> document.getElementById('Value').addEventListner('keyup', function(){console.log('hello')});
+textBox.addEventListner('keyup', () => {
+  getData();
+});
+*/
+
+/*
+const textBox = document.createElement('input');
+textBox.setAttribute('type','text');
+textBox.setAttribute('id', 'value');
+document.body.append(textBox);
+
+const button = document.createElement('button');
+button.setAttribute('type','submit');
+button.setAttribute('id', 'click');
+button.innerText = 'click me!';
+document.body.append(button);
+
+textBox.addEventListner('keyup', ()=> {printNofTimes();});
+let count =0;
+function getData() {
+  console.log("Hello this is Debouncing" + ' ' + count++);
+}
+*/
+let count =0;
+function getData() {
+  console.log("Hello this is Debouncing" + ' ' + ++count);
+}
+
+const printNofTimes = function(fn, delay){
+let timer; //here closure appears they remember the timer value all the time
+return function(){
+  // document.body.innerHTML = 'check';
+   const context = this;
+   const args = arguments;
+   clearTimeout(timer);
+   timer = setTimeout(()=> {
+    getData();// not pracitcable, when the agrs are passed in func
+    // getDate.apply(context, arguments)
+   }, delay);
+
+}
+}
+const debounce = printNofTimes(getData, 300); // (fn, delay no);
+debounce(); // it'll wait for the delayed sec after that will call every time
+//example -> searchbox, elevator, submit button
+
+//document.getElementById('value').addEventListener('keyup', debounce);
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+//Throttling -> rate limiting the function calls and performance
+//throttling -> limit the funciton to be called in particular period time, first time it'll will run 
+//examples -> scroll, resize -> using some flag to check
+
+let count1 =0;
+function resizedFunc() {
+  console.log("Hello this is throttling" + ' ' + ++count1);
+}
+
+const printResizeNofTimes = function(fn, delay){
+let flg =1; //here closure appears they remember the timer value all the time
+return function(arguments){
+  // document.body.innerHTML = 'check';
+   const context = this;
+   const args = arguments;
+    if(flg) { resizedFunc(); flg=0;}
+   //clearTimeout(timer);
+   setTimeout(()=> {
+    resizedFunc();// not pracitcable, when the agrs are passed in func
+    // resizedFunc.apply(context, arguments)
+    flg=1;
+   }, delay);
+
+}
+}
+const throttling = printResizeNofTimes(getData, 300); // (fn, delay no);
+throttling();
+/*------------------------------------------------------------------------------------------------------------------------------*/
+
+
 
 
 
